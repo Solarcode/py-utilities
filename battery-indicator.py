@@ -4,8 +4,9 @@ from time import sleep
 from tkinter import *
 from tkinter import messagebox
 import winsound
+from distutils.util import strtobool
 
-# config reading setup
+# Read config file
 
 file = 'config.ini'
 config = ConfigParser()
@@ -16,8 +17,8 @@ config.read(file)
 frequency = int(config.get('settings', 'frequency'))
 threshold_upper = int(config.get('settings', 'threshold_upper'))
 threshold_lower = int(config.get('settings', 'threshold_lower'))
-message_box = bool(config.get('settings', 'message_box'))
-sound = bool(config.get('settings', 'sound'))
+message_box = strtobool(config.get('settings', 'message_box'))
+sound = strtobool(config.get('settings', 'sound'))
 sound_path = str(config.get('settings', 'sound_path'))
 
 # Functions
@@ -47,7 +48,7 @@ def notify(battery_level):
 	print(message)
 	if (sound):
 		play_sound()
-	if (message_box == True):
+	if (message_box):
 		show_message(message)
 
 # Main block
