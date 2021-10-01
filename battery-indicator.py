@@ -55,9 +55,9 @@ def notify(battery_level):
 
 toggle = False
 charging = sensors_battery().power_plugged
-
+battery = get_percent()
 while True:
-	if charging != sensors_battery().power_plugged:
+	if charging != sensors_battery().power_plugged or battery != get_percent():
 		toggle = False
 	while not toggle:
 		battery = get_percent()
