@@ -43,11 +43,11 @@ def notify(battery_level):
 	if (battery_level):
 		message = 'The battery level has reached ' + str(threshold_upper) + '%, please stop charging your computer.'
 	elif (not battery_level):
-		message = 'The battery level has fallen to ' + str(threshold_lower) + '%, please charge your computer.'
+		message = 'The battery level has fallen below ' + str(threshold_lower) + '%, please charge your computer.'
 	print(message)
 	if (sound):
 		play_sound()
-	if (message_box):
+	if (message_box == True):
 		show_message(message)
 
 # Main block
@@ -65,6 +65,6 @@ while True:
 			notify(True)
 		elif (battery <= threshold_lower and charging == False):
 			notify(False)
-		sleep(frequency)
+		sleep(frequency / 2)
 		toggle = True
-	sleep(1)
+	sleep(frequency / 2)
