@@ -1,0 +1,10 @@
+settings in external file
+
+read config file
+	set variables
+if laptop is charging and percentage hits THRESHOLD
+	notify the user to disconnect laptop charger
+		messagebox?
+		chime sound?
+
+check every x seconds
