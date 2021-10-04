@@ -13,13 +13,14 @@ config = ConfigParser()
 config.read(file)
 
 # Set variables from config file
- 
+
 frequency = int(config.get('settings', 'frequency'))
 threshold_upper = int(config.get('settings', 'threshold_upper'))
 threshold_lower = int(config.get('settings', 'threshold_lower'))
 message_box = strtobool(config.get('settings', 'message_box'))
 sound = strtobool(config.get('settings', 'sound'))
 sound_path = str(config.get('settings', 'sound_path'))
+print = strtobool(config.get('settings', 'print'))
 
 # Functions
 
@@ -45,7 +46,8 @@ def notify(battery_level):
 		message = 'The battery level has reached ' + str(threshold_upper) + '%, please stop charging your computer.'
 	elif (not battery_level):
 		message = 'The battery level has fallen below ' + str(threshold_lower) + '%, please charge your computer.'
-	print(message)
+	if (print):
+		print(message)
 	if (sound):
 		play_sound()
 	if (message_box):
